@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CoreUI CSS -->
+    <link rel="stylesheet" href="../node_modules/@coreui/coreui/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="../node_modules/@coreui/icons/css/free.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css"> -->
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+
+    <!-- jQuery / jQuery UI js, css -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+    <!-- <script src="compornent.js"></script> -->
+
+    <title>RSS-reader</title>
+    <style>
+      /* .box-container{
+        width: 300px;
+        height: 700px;
+        background-color: ;
+      }
+      .mx-h{
+        max-height: 200px;
+      } */
+      /* #feed-template{
+        display: none;
+      }
+      .feed-item{
+        display: none;
+      } */
+    </style>
+  </head>
+
+  <body class="c-app c-dark-theme">
+    <!-- サイドバー -->
+    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+      <div class="c-sidebar-brand d-md-down-none">
+        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+        </svg>
+        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
+        </svg>
+      </div>
+
+      <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-title">Theme</li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="colors.html">
+        <svg class="c-sidebar-nav-icon">
+        </svg> Colors</a></li>
+        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="typography.html">
+        <svg class="c-sidebar-nav-icon">
+        </svg> Typography</a></li>
+
+        <!-- サイドバーアイテム -->
+        <li class="c-sidebar-nav-title">Components</li>
+        <li class="c-sidebar-nav-dropdown">
+          <a class="c-sidebar-nav-dropdown-toggle" href="#">
+            <svg class="c-sidebar-nav-icon"></svg>
+             Buttons
+          </a>
+          <ul class="c-sidebar-nav-dropdown-items">
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="buttons/buttons.html"> Buttons</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="buttons/brand-buttons.html"> Brand Buttons</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="buttons/button-group.html"> Buttons Group</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="buttons/dropdowns.html"> Dropdowns</a></li>
+            <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="buttons/loading-buttons.html"> Loading Buttons<span class="badge badge-danger">PRO</span></a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
+    </div>
+
+  <!-- <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
+  <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
+  <svg class="c-icon">
+  </svg>
+  </button>
+  <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#timeline" role="tab">
+  <svg class="c-icon">
+  </svg></a></li>
+  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab">
+  <svg class="c-icon">
+  </svg></a></li>
+  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab">
+  <svg class="c-icon">
+  </svg></a></li>
+  </ul>
+
+  <div class="tab-content">
+  <div class="tab-pane active" id="timeline" role="tabpanel">
+  <div class="list-group list-group-accent">
+  <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase c-small">Today</div>
+  <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+  <div>Meeting with <strong>Lucas</strong></div><small class="text-muted mr-3">
+  <svg class="c-icon">
+  </svg>&nbsp; 1 - 3pm</small><small class="text-muted">
+  <svg class="c-icon">
+  </svg>&nbsp; Palo Alto, CA</small>
+  </div>
+  <div class="list-group-item list-group-item-accent-info">
+  <div>Skype with <strong>Megan</strong></div><small class="text-muted mr-3">
+  <svg class="c-icon">
+  </svg>&nbsp; 4 - 5pm</small><small class="text-muted">
+  <svg class="c-icon">
+  </svg>&nbsp; On-line</small>
+  </div>
+  <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase c-small">Tomorrow</div>
+  <div class="list-group-item list-group-item-accent-danger list-group-item-divider">
+  <div>New UI Project - <strong>deadline</strong></div><small class="text-muted mr-3">
+  <svg class="c-icon">
+  </svg>&nbsp; 10 - 11pm</small><small class="text-muted">
+  <svg class="c-icon">
+  </svg>&nbsp; creativeLabs HQ</small>
+  <div class="c-avatars-stack mt-2">
+  </div>
+  </div>
+  <div class="list-group-item list-group-item-accent-success list-group-item-divider">
+  <div><strong>#10 Startups.Garden</strong> Meetup</div><small class="text-muted mr-3">
+  <svg class="c-icon">
+  </svg>&nbsp; 1 - 3pm</small><small class="text-muted">
+  <svg class="c-icon">
+  </svg>&nbsp; Palo Alto, CA</small>
+  </div>
+  <div class="list-group-item list-group-item-accent-primary list-group-item-divider">
+  <div><strong>Team meeting</strong></div><small class="text-muted mr-3">
+  <svg class="c-icon">
+  </svg>&nbsp; 4 - 6pm</small><small class="text-muted">
+  <svg class="c-icon">
+  </svg>&nbsp; creativeLabs HQ</small>
+  <div class="c-avatars-stack mt-2">
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="tab-pane p-3" id="messages" role="tabpanel">
+  <div class="message">
+  <div class="py-3 pb-5 mr-3 float-left">
+  </div>
+  <div><small class="text-muted">Lukasz Holeczek</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+  </div>
+  <hr>
+  <div class="message">
+  <div class="py-3 pb-5 mr-3 float-left">
+  </div>
+  <div><small class="text-muted">Lukasz Holeczek</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+  </div>
+  <hr>
+  <div class="message">
+  <div class="py-3 pb-5 mr-3 float-left">
+  </div>
+  <div><small class="text-muted">Lukasz Holeczek</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+  </div>
+  <hr>
+  <div class="message">
+  <div class="py-3 pb-5 mr-3 float-left">
+  </div>
+  <div><small class="text-muted">Lukasz Holeczek</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+  </div>
+  <hr>
+  <div class="message">
+  <div class="py-3 pb-5 mr-3 float-left">
+  </div>
+  <div><small class="text-muted">Lukasz Holeczek</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+  </div>
+  </div>
+  <div class="tab-pane p-3" id="settings" role="tabpanel">
+  <h6>Settings</h6>
+  <div class="c-aside-options">
+  <div class="clearfix mt-4"><small><b>Option 1</b></small>
+  <label class="c-switch c-switch-label c-switch-pill c-switch-success c-switch-sm float-right">
+  <input class="c-switch-input" type="checkbox" checked=""><span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+  </label>
+  </div>
+  <div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></div>
+  </div>
+  <div class="c-aside-options">
+  <div class="clearfix mt-3"><small><b>Option 2</b></small>
+  <label class="c-switch c-switch-label c-switch-pill c-switch-success c-switch-sm float-right">
+  <input class="c-switch-input" type="checkbox"><span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+  </label>
+  </div>
+  <div><small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></div>
+  </div>
+  <div class="c-aside-options">
+  <div class="clearfix mt-3"><small><b>Option 3</b></small>
+  <label class="c-switch c-switch-label c-switch-pill c-switch-success c-switch-sm float-right">
+  <input class="c-switch-input" type="checkbox"><span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+  </label>
+  </div>
+  </div>
+  <div class="c-aside-options">
+  <div class="clearfix mt-3"><small><b>Option 4</b></small>
+  <label class="c-switch c-switch-label c-switch-pill c-switch-success c-switch-sm float-right">
+  <input class="c-switch-input" type="checkbox" checked=""><span class="c-switch-slider" data-checked="On" data-unchecked="Off"></span>
+  </label>
+  </div>
+  </div>
+  <hr>
+  <h6>System Utilization</h6>
+  <div class="text-uppercase mb-1 mt-4"><small><b>CPU Usage</b></small></div>
+  <div class="progress progress-xs">
+  <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><small class="text-muted">348 Processes. 1/4 Cores.</small>
+  <div class="text-uppercase mb-1 mt-2"><small><b>Memory Usage</b></small></div>
+  <div class="progress progress-xs">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><small class="text-muted">11444GB/16384MB</small>
+  <div class="text-uppercase mb-1 mt-2"><small><b>SSD 1 Usage</b></small></div>
+  <div class="progress progress-xs">
+  <div class="progress-bar bg-danger" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><small class="text-muted">243GB/256GB</small>
+  <div class="text-uppercase mb-1 mt-2"><small><b>SSD 2 Usage</b></small></div>
+  <div class="progress progress-xs">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+  </div><small class="text-muted">25GB/256GB</small>
+  </div>
+  </div>
+  </div> -->
+
+    <!-- メイン画面 -->
+    <div class="c-wrapper">
+      <!-- ヘッダー -->
+      <header class="c-header c-header-light c-header-fixed">
+        <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+          <svg class="c-icon c-icon-lg"></svg>
+        </button>
+
+        <a class="c-header-brand d-lg-none c-header-brand-sm-up-center" href="#">
+          <svg width="118" height="46" alt="CoreUI Logo"></svg>
+        </a>
+
+        <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+          <svg class="c-icon c-icon-lg"></svg>
+        </button>
+
+        <ul class="c-header-nav d-md-down-none">
+          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>
+          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>
+          <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
+        </ul>
+
+        <!-- モード切り替え？ -->
+        <ul class="c-header-nav mfs-auto">
+          <li class="c-header-nav-item px-3 c-d-legacy-none">
+            <button class="c-class-toggler c-header-nav-btn" type="button" id="header-tooltip" data-target="body" data-class="c-dark-theme" data-toggle="c-tooltip" data-placement="bottom" title="Toggle Light/Dark Mode">
+              <svg class="c-icon c-d-dark-none"></svg>
+              <svg class="c-icon c-d-default-none"></svg>
+            </button>
+          </li>
+        </ul>
+
+        <ul class="c-header-nav">
+          <!-- <li class="c-header-nav-item dropdown d-md-down-none mx-2">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><svg class="c-icon"></svg><span class="badge badge-pill badge-info">7</span></a>
+
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg pt-0">
+              <div class="dropdown-header bg-light"><strong>You have 4 messages</strong></div>
+              <a class="dropdown-item" href="#">
+                <div class="message">
+                  <div class="py-3 mfe-3 float-left"></div>
+                  <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">Just now</small></div>
+                  <div class="text-truncate font-weight-bold"><span class="text-danger">!</span> Important message</div>
+                  <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="#">
+                <div class="message">
+                  <div class="py-3 mfe-3 float-left"></div>
+                  <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">5 minutes ago</small></div>
+                  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                  <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="#">
+                <div class="message">
+                  <div class="py-3 mfe-3 float-left"></div>
+                  <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">1:52 PM</small></div>
+                  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                  <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                </div>
+              </a>
+              <a class="dropdown-item" href="#">
+                <div class="message">
+                  <div class="py-3 mfe-3 float-left"></div>
+                  <div><small class="text-muted">John Doe</small><small class="text-muted float-right mt-1">4:03 PM</small></div>
+                  <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                  <div class="small text-muted text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</div>
+                </div>
+              </a>
+              <a class="dropdown-item text-center border-top" href="#"><strong>View all messages</strong></a>
+            </div>
+          </li> -->
+
+          <!-- <li class="c-header-nav-item dropdown">
+            <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+              <div class="dropdown-header bg-light py-2"><strong>Account</strong></div><a class="dropdown-item" href="#">
+              <svg class="c-icon mfe-2"></svg> Updates<span class="badge badge-info mfs-auto">42</span></a><a class="dropdown-item" href="#">
+              <svg class="c-icon mfe-2"></svg> Messages<span class="badge badge-success mfs-auto">42</span></a><a class="dropdown-item" href="#">
+              <svg class="c-icon mfe-2"></svg> Tasks<span class="badge badge-danger mfs-auto">42</span></a><a class="dropdown-item" href="#">
+              <svg class="c-icon mfe-2"></svg> Comments<span class="badge badge-warning mfs-auto">42</span></a>
+
+              <div class="dropdown-header bg-light py-2"><strong>Settings</strong></div>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Profile</a>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Settings</a>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Payments<span class="badge badge-secondary mfs-auto">42</span></a>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Projects<span class="badge badge-primary mfs-auto">42</span></a>
+
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Lock Account</a>
+              <a class="dropdown-item" href="#"><svg class="c-icon mfe-2"></svg> Logout</a>
+
+            </div>
+          </li> -->
+
+          <!-- <button class="c-header-toggler c-class-toggler mfe-md-3" type="button" data-target="#aside" data-class="c-sidebar-show">
+            <svg class="c-icon c-icon-lg">
+            </svg>
+          </button> -->
+        </ul>
+
+        <div class="c-subheader justify-content-between px-3">
+
+          <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
+            <li class="breadcrumb-item"><a href="#" id="add-item">記事を追加</a></li>
+            <li class="breadcrumb-item active"><a href="/logout">ログアウト</a></li>
+          </ol>
+
+          <div class="c-subheader-nav d-md-down-none mfe-2">
+            <a class="c-subheader-nav-link" href="#">
+              <svg class="c-icon">
+              </svg>
+            </a>
+
+            <a class="c-subheader-nav-link" href="#">
+              <svg class="c-icon">
+              </svg> &nbsp;Dashboard
+            </a>
+
+            <a class="c-subheader-nav-link" href="#">
+              <svg class="c-icon">
+              </svg> &nbsp;Settings
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- ボディ -->
+      <div class="c-body">
+        <!-- ダイアログ -->
+        <div id="edit-dialog" title="記事を編集する" style="display:none;">
+          <div class="dialog-header">
+            <button type="button" id="update-item">記事を変更する</button>
+            <button type="button" id="delete-item">記事を削除する</button>
+          </div>
+        </div>
+
+        <main class="c-main">
+          <div class="container-fluid">
+            <div id="ui-view">
+
+              <div>
+                <div class="fade-in">
+                  <div class="row" id="main-area">
+                    <div class="col-sm-6 col-md-4" id="feed-template">
+                      <!-- カードコンポーネント -->
+                      <div class="card">
+                        <!-- カードヘッダー -->
+                        <div class="card-header">
+                          <!-- タイトル -->
+                          <a href="#" class="feed-title">サイトタイトル</a>
+                          <!-- ボタンアクション -->
+                          <div class="card-header-actions">
+                            <!-- 設定ボタン -->
+                            <a href="#" class="card-header-action btn-setting open-dialog">
+                              <i class="c-icon cil-settings">
+                                <use xlink:href="../node_modules/@coreui/icons/svg/free.svg/cil-settings"></use>
+                              </i>
+                            </a>
+                            <!-- feed削除ボタン -->
+                            <a href="#" class="card-header-action btn-close">
+                              <i class="c-icon cil-x-circle">
+                                <use xlink:href="../node_modules/@coreui/icons/svg/free.svg/cil-x-circle"></use>
+                              </i>
+                            </a>
+                          </div>
+                        </div>
+                        <!-- カードボディ -->
+                        <div class="card-body">
+                          <li class="feed-items" style="overflow:scroll; height:30vh;">
+                            <a href="#" class="feed-item">記事リンク</a>
+                          </li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <footer class="c-footer">
+        <div><a href="https://coreui.io">CoreUI</a> © 2020 creativeLabs.</div>
+        <div class="mfs-auto">Powered by&nbsp;<a href="https://coreui.io/pro/">CoreUI Pro</a></div>
+      </footer>
+    </div>
+
+    <script src="../node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+    <script src="Sortable.js"></script>
+    <script src="compornent.js"></script>
+  </body>
+</html>

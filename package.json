@@ -2,7 +2,12 @@
   "name": "rss-reader",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "4.2.2"
+    "@coreui/coreui": "^3.2.2",
+    "@coreui/icons": "^1.0.1",
+    "@coreui/vue": "^3.0.12",
+    "@popperjs/core": "^2.4.3",
+    "@rails/webpacker": "4.2.2",
+    "perfect-scrollbar": "^1.5.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",
@@ -17,6 +22,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "minimatch": "^3.0.4",
     "webpack-dev-server": "^3.11.0"
   }
 }
