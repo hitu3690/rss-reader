@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CoreUI CSS -->
-    <link rel="stylesheet" href="../node_modules/@coreui/coreui/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="/node_modules/@coreui/coreui/dist/css/coreui.min.css">
     <!-- <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css"> -->
 
     <title>CoreUI</title>
@@ -341,20 +341,26 @@
               <form action="/login" method="post" data-local="true">
 
                 <label for="user_name">ユーザー名</label>
-                <input type="text" name="session[name]" id="user_name">
+                <input type="text" name="session[name]">
 
                 <label for="user_mail">メールアドレス</label>
-                <input type="email" name="session[email]" id="user_mail">
+                <input type="email" name="session[email]">
+
+                <label for="user_password">パスワード</label>
+                <input type="password" name="session[password]">
 
                 <input type="submit" value="ユーザーログイン">
               </form>
 
               <form action="/users" method="post" data-local="true">
                 <label for="user_name">ユーザー名</label>
-                <input type="text" name="user[name]" id="user_name">
+                <input type="text" name="user[name]">
 
                 <label for="user_mail">メールアドレス</label>
-                <input type="email" name="user[email]" id="user_mail">
+                <input type="email" name="user[email]">
+
+                <label for="user_password">パスワード</label>
+                <input type="password" name="user[password]">
 
                 <input type="submit" value="ユーザー作成">
               </form>
@@ -371,6 +377,6 @@
       </footer>
     </div>
 
-    <script src="../node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+    <script src="/node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
   </body>
 </html>

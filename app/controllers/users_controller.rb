@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery :except => [:create, :show]
 
   def new
     @user = User.new
@@ -8,18 +9,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      render file: "public/tables.html"
+      redirect_to "/table.html"
     else
-      redirect_to root_url
+      render "/"
     end
   end
 
   def show
     @user = User.find(params[:id])
     if @user.id == session[:user_id]
-      render file: "public/tables.html"
+      redirect_to "/table.html"
     else
-      redirect_to root_url
+      render "/"
     end
   end
 
@@ -28,6 +29,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password)
     end
 end

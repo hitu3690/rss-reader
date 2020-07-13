@@ -1,10 +1,11 @@
 class User < ApplicationRecord
   VALID_EMAIL_RAGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  has_secure_password
+  has_secure_password validations: false
+  has_many :feeds, dependent: :destroy
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum; 155 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :name, presence: true, length: { maximum: 50 }, unless: :uid?
+  validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: true }, format: { with: VALID_EMAIL_RAGEX }, unless: :uid?
+  validates :password, presence: true, length: { minimum: 6 }, unless: :uid?
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|

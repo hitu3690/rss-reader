@@ -7,7 +7,11 @@
     "@coreui/vue": "^3.0.12",
     "@popperjs/core": "^2.4.3",
     "@rails/webpacker": "4.2.2",
-    "perfect-scrollbar": "^1.5.0"
+    "jquery": "^3.5.1",
+    "jquery-ui": "^1.12.1",
+    "perfect-scrollbar": "^1.5.0",
+    "sortablejs": "^1.10.2",
+    "vue": "^2.6.11"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "version": "1.0.0",

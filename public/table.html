@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <!-- Required meta tags -->
@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CoreUI CSS -->
-    <link rel="stylesheet" href="../node_modules/@coreui/coreui/dist/css/coreui.min.css">
-    <link rel="stylesheet" href="../node_modules/@coreui/icons/css/free.min.css">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/@coreui/icons/css/free.min.css"> -->
+    <link rel="stylesheet" href="/node_modules/@coreui/coreui/dist/css/coreui.min.css">
+    <link rel="stylesheet" href="/node_modules/@coreui/icons/css/free.min.css">
 
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
 
     <!-- jQuery / jQuery UI js, css -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
@@ -32,12 +29,12 @@
       .mx-h{
         max-height: 200px;
       } */
-      /* #feed-template{
+      #feed-template{
         display: none;
       }
       .feed-item{
         display: none;
-      } */
+      }
     </style>
   </head>
 
@@ -79,6 +76,7 @@
 
       <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-unfoldable"></button>
     </div>
+
 
   <!-- <div class="c-sidebar c-sidebar-lg c-sidebar-light c-sidebar-right c-sidebar-overlaid" id="aside">
   <button class="c-sidebar-close c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-show" responsive="true">
@@ -337,40 +335,23 @@
         </ul>
 
         <div class="c-subheader justify-content-between px-3">
-
           <ol class="breadcrumb border-0 m-0 px-0 px-md-3">
+            <li class="breadcrumb-item"><a href="/">ホームページへ</a></li>
             <li class="breadcrumb-item"><a href="#" id="add-item">記事を追加</a></li>
-            <li class="breadcrumb-item active"><a href="/logout">ログアウト</a></li>
+            <li class="breadcrumb-item"><a href="/logout">ログアウト</a></li>
           </ol>
-
-          <div class="c-subheader-nav d-md-down-none mfe-2">
-            <a class="c-subheader-nav-link" href="#">
-              <svg class="c-icon">
-              </svg>
-            </a>
-
-            <a class="c-subheader-nav-link" href="#">
-              <svg class="c-icon">
-              </svg> &nbsp;Dashboard
-            </a>
-
-            <a class="c-subheader-nav-link" href="#">
-              <svg class="c-icon">
-              </svg> &nbsp;Settings
-            </a>
-          </div>
         </div>
       </header>
 
       <!-- ボディ -->
       <div class="c-body">
         <!-- ダイアログ -->
-        <div id="edit-dialog" title="記事を編集する" style="display:none;">
+        <!-- <div id="edit-dialog" title="記事を編集する" style="display:none;">
           <div class="dialog-header">
             <button type="button" id="update-item">記事を変更する</button>
             <button type="button" id="delete-item">記事を削除する</button>
           </div>
-        </div>
+        </div> -->
 
         <main class="c-main">
           <div class="container-fluid">
@@ -391,13 +372,13 @@
                             <!-- 設定ボタン -->
                             <a href="#" class="card-header-action btn-setting open-dialog">
                               <i class="c-icon cil-settings">
-                                <use xlink:href="../node_modules/@coreui/icons/svg/free.svg/cil-settings"></use>
+                                <use xlink:href="/node_modules/@coreui/icons/svg/free.svg/cil-settings"></use>
                               </i>
                             </a>
                             <!-- feed削除ボタン -->
                             <a href="#" class="card-header-action btn-close">
                               <i class="c-icon cil-x-circle">
-                                <use xlink:href="../node_modules/@coreui/icons/svg/free.svg/cil-x-circle"></use>
+                                <use xlink:href="/node_modules/@coreui/icons/svg/free.svg/cil-x-circle"></use>
                               </i>
                             </a>
                           </div>
@@ -425,8 +406,10 @@
       </footer>
     </div>
 
-    <script src="../node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
-    <script src="Sortable.js"></script>
-    <script src="compornent.js"></script>
+    <script src="/node_modules/@coreui/coreui/dist/js/coreui.bundle.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/node_modules/sortablejs/Sortable.min.js"></script>
+    <script src="/compornent.js"></script>
   </body>
 </html>

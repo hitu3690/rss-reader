@@ -19,7 +19,7 @@ class FeedsController < ApplicationController
       newFeed = {
         status: @error
       }
-      render :json => newFeed
+      return render :json => newFeed
     end
 
     if @feed.save

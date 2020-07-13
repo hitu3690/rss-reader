@@ -13,6 +13,7 @@ $(function(){
     if(rssfeed.message != null){
       location.href = "/login"
       alert(rssfeed.message)
+      console.log(rssfeed.message)
     }else{
       for(let i = 0; i < rssfeed.length; i++){
         $("#feed-template").clone().css('display', 'block').appendTo("#main-area").attr('id', `feed-${rssfeed[i].id}`);
@@ -88,6 +89,7 @@ $(function(){
           console.log(data.responseText);
         })
         .always((data) => {
+          console.log(data);
         });
       }else if(newFeed.status === "failure"){
         alert("URLの取得に失敗しました")
