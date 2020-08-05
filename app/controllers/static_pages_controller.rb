@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    render file: "public/home.html"
+    render file: "public/login.html"
     # redirect_to "/home.html"
   end
 end

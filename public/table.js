@@ -2,7 +2,6 @@
 
 // RSSページ遷移前の処理
 $(function(){
-
   // ログインユーザーかどうか判別
   $.ajax({
     url: "/feeds/",
@@ -17,7 +16,6 @@ $(function(){
     }else{
       for(let i = 0; i < rssfeed.length; i++){
         $("#feed-template").clone().css('display', 'block').appendTo("#main-area").attr('id', `feed-${rssfeed[i].id}`);
-
         // ユーザー毎の記事を取得
         $.ajax({
           url: "/feeds/" + rssfeed[i].id,
@@ -28,12 +26,17 @@ $(function(){
           $("#feed-" + rssfeed[i].id).find(".feed-title").text(data.feed.title).attr("href", data.feed.url)
           let feedItem = $("#feed-" + rssfeed[i].id).find(".feed-item")
           let feedItems = $("#feed-" + rssfeed[i].id).find(".feed-items")
+          let feedList = $("#feed-" + rssfeed[i].id).find(".feed-list")
+          let feedBody = $("#feed-" + rssfeed[i].id).find(".feed-body")
 
           // 設定ボタンを一意化
-          $("#feed-" + rssfeed[i].id).find(".open-dialog").attr('onClick', `openDialog(${rssfeed[i].id})`)
+          $("#feed-" + rssfeed[i].id).find(".delete-item").attr('onClick', `deleteItem(${rssfeed[i].id})`)
+          $("#feed-" + rssfeed[i].id).find(".update-item").attr('onClick', `updateItem(${rssfeed[i].id})`)
 
           for(let j = 0; j < data.feed.items.length; j++){
-            feedItem.clone().css("display", "block").text(data.feed.items[j].title).attr("href", data.feed.items[j].url).appendTo(feedItems)
+            feedItems.clone().css("display", "block").appendTo(feedBody)
+            feedList.clone().css("display", "block").appendTo(feedItems)
+            feedItem.clone().css("display", "block").text(data.feed.items[j].title).attr("href", data.feed.items[j].url).appendTo(feedList)
           }
         })
         .fail((data) => {
@@ -79,7 +82,8 @@ $(function(){
           let feedItems = $(`#feed-${newFeed.id}`).find(".feed-items")
 
           // 設定ボタンを一意化
-          $("#feed-" + newFeed.id).find(".open-dialog").attr('onClick', `openDialog(${newFeed.id})`)
+          $("#feed-" + newFeed.id).find(".delete-item").attr('onClick', `deleteItem(${newFeed.id})`)
+          $("#feed-" + newFeed.id).find(".update-item").attr('onClick', `updateItem(${newFeed.id})`)
 
           for(let j = 0; j < data.feed.items.length; j++){
             feedItem.clone().css("display", "block").text(data.feed.items[j].title).attr("href", data.feed.items[j].url).appendTo(feedItems)
@@ -106,14 +110,11 @@ $(function(){
   })
 })
 
-// 設定ボタン
-function openDialog(feedId){
+// 編集ボタン
+function updateItem(feedId){
   $(function(){
-    $("#edit-dialog").dialog();
-
-    // 編集ボタン
-    $("#update-item").on("click", ()=>{
-      let updateResult = prompt("記事を変更する", "ここにURLを入力してください")
+    let updateResult = prompt("記事を変更する", "ここにURLを入力してください")
+    if(updateResult){
       $.ajax({
         url: `/feeds/${feedId}`,
         type: "POST",
@@ -129,27 +130,30 @@ function openDialog(feedId){
       })
       .always(()=>{
       })
-    })
-
-    // 削除ボタン
-    $("#delete-item").on("click", ()=>{
-      $.ajax({
-        url: `/feeds/${feedId}`,
-        type: "POST",
-        dataType: "json",
-        data: {"_method": "DELETE"}
-      })
-      .done((data)=>{
-        location.reload();
-        alert(data.status)
-      })
-      .fail(()=>{
-        alert("通信に失敗しました")
-      })
-      .always(()=>{
-      })
-    })
+    }
   })
+}
+
+// 削除ボタン
+function deleteItem(feedId){
+  let result = confirm("本当に削除しますか？")
+  if(result){
+    $.ajax({
+      url: `/feeds/${feedId}`,
+      type: "POST",
+      dataType: "json",
+      data: {"_method": "DELETE"}
+    })
+    .done((data)=>{
+      location.reload();
+      alert(data.status)
+    })
+    .fail(()=>{
+      alert("通信に失敗しました")
+    })
+    .always(()=>{
+    })
+  }
 }
 
 // 並び替え

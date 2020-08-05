@@ -56,6 +56,7 @@ class FeedsController < ApplicationController
     @list = []
     obj.entries.each do |item|
       @list += [
+        :image => item.image,
         :title => item.title,
         :url => item.url,
         :summary => item.summary,
@@ -108,7 +109,7 @@ class FeedsController < ApplicationController
   end
 
   private
-  def feed_params
-    params.require(:feed).permit(:url)
-  end
+    def feed_params
+      params.require(:feed).permit(:url)
+    end
 end

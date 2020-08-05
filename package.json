@@ -4,7 +4,6 @@
   "dependencies": {
     "@coreui/coreui": "^3.2.2",
     "@coreui/icons": "^1.0.1",
-    "@coreui/vue": "^3.0.12",
     "@popperjs/core": "^2.4.3",
     "@rails/webpacker": "4.2.2",
     "jquery": "^3.5.1",

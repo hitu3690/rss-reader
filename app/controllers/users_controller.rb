@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   protect_from_forgery :except => [:create, :show]
+  before_action :admin_user, only: :destroy
 
   def new
     @user = User.new
@@ -25,10 +26,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    User.find(params[:id]).destroy
   end
 
   private
     def user_params
       params.require(:user).permit(:name, :email, :password)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end
