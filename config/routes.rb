@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # resources :users
   #
   # # Google認証
-  # get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'api/v1/sessions#create'
   # get '/auth/failure', to: redirect('/')
   #
   # resources :sessions
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
           get :me
         end
       end
-      resource :session
+      resource :sessions
     end
   end
 end
